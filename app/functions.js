@@ -55,6 +55,12 @@ exports.functionsAnswers = {
   },
 
   curryIt: function(fn) {
-    //Blocker
+    return (arg1) => {
+      return (arg2) => {
+        return (arg3) => {
+          return fn(arg1,arg2,arg3);
+        }
+      }
+    }
   }
 };

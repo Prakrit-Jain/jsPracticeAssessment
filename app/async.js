@@ -14,12 +14,18 @@ exports.asyncAnswers = {
     });
   },
 
-  manipulateRemoteData: async function(url) {
-
-    //Blocker
-
-    // var res = await fetch(`127.0.0.1:4444/${url}`);
-    // var data = await res.json();
-    // return data;
+  manipulateRemoteData:function(url) {
+    var pr = new Promise((res,rej)=>{
+      fetch(url)
+      .then(res=>res.json())
+      .then(data => {
+        arr = (data.people).map((ele)=>{
+          return (ele.name);
+      })
+      res(arr.sort());
+      })
+      .catch(err=>console.log(err));
+    })
+    return pr;
   }
 };
